@@ -1,0 +1,18 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #FCEEF2;
+}
+
+.logo {
+    width: 200px;
+}
+
+.form {
+    border: 3px solid rgb(38, 146, 123);
+    margin: auto;
+    width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+}
