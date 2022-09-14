@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const Login = () => {
 
-    const URI = 'http://localhost:8080/authenticate'
+    const URI = 'http://localhost:8080/'
 
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
@@ -18,7 +18,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(URI, {
+        fetch(URI + "authenticate", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -26,9 +26,10 @@ const Login = () => {
             body: JSON.stringify(credentials)
         })
             .then((response) => response.json())
-            .then(data => setJwt("Bearer " + data.jwt))
-    }
+            .then(data => setJwt("Bearer " + data.jwt));
 
+        fetch(URL + "user/")
+    }
 
     return (
         <div className='mb-3 form'>
@@ -53,6 +54,7 @@ const Login = () => {
                 <br />
                 <input className='btn btn-light' type='submit' value='Submit' />
             </form>
+            <p>{jwt}</p>
         </div>
     );
 };
