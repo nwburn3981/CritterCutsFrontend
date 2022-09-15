@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { store } from '../store';
 
 
 const Login = () => {
-
+    const dispatch = useDispatch();
     const URI = 'http://localhost:8080/'
 
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
-    const [jwt, setJwt] = useState('');
-    const [userID, setUserID] = useState('')
+    const [jwt1, setJwt] = useState('');
+
+    const { jwt } = useSelector((store) => store.jwt);
 
     const credentials = {
         "username": user,
@@ -54,7 +57,6 @@ const Login = () => {
                 <br />
                 <input className='btn btn-light' type='submit' value='Submit' />
             </form>
-            <p>{jwt}</p>
         </div>
     );
 };

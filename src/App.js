@@ -8,10 +8,7 @@ function App() {
 
   return (
     <div className='container'>
-
-
       <Login />
-
     </div>
   );
 }
