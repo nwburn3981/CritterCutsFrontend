@@ -4,7 +4,7 @@ import Header from "./Header";
 const Pets = () => {
   return (
     <div>
-      <Header />
+      <h1 className="display-1">Pets</h1>
     </div>
   );
 };

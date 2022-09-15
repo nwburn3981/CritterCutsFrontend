@@ -1,8 +1,12 @@
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
-import Login from './components/Login.js'
-import Appointments from './components/Appointments';
+// import Login from './components/Login.js'
+import CustomerHome from './components/CustomerHome';
+import Header from './components/Header';
+import { Route, Routes } from 'react-router';
+import Pets from "./components/Pets";
+import Appointments from "./components/Appointments";
 
 function App() {
 
@@ -78,7 +82,16 @@ function App() {
   }
   else {
     return (
-      <Appointments />
+      <div>
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<CustomerHome />} exact />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/pets" element={<Pets />} />
+          {/* <Route path="/logout" element={<Home />} /> */}
+        </Routes>
+      </div>
     )
   }
 
