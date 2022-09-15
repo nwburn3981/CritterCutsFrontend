@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    jwt: '',
+    token: '',
     isAuthenticated: false,
 }
 
@@ -10,10 +10,10 @@ const jwtSlice = createSlice({
     initialState,
     reducers: {
         addJwt: (state, action) => {
-            state.jwt = action.payload;
+            state.token = action.payload;
         },
         removeJwt: (state) => {
-            state.jwt = '';
+            state.token = '';
         },
         notAuthenticated: (state) => {
             state.isAuthenticated = false;

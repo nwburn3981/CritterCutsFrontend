@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addJwt } from '../features/jwtSlice';
 import { store } from '../store';
 
+const URI = 'http://localhost:8080/'
 
 const Login = (props) => {
-    const dispatch = useDispatch();
-    const URI = 'http://localhost:8080/'
 
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
-    const [jwt, setJwt] = useState('');
 
-
-    // const { jwt, isAuthenticated } = useSelector((store) => store.jwt);
+    const dispatch = useDispatch();
+    const { token, isAuthenticated } = useSelector((store) => store.jwt);
 
     const credentials = {
         "username": user,
@@ -31,8 +29,7 @@ const Login = (props) => {
             body: JSON.stringify(credentials)
         })
             .then((response) => response.json())
-            .then(data => setJwt("Bearer " + data.jwt));
-        // .then(data => dispatch({ type: 'addJwt', payload: "Bearer " + data.jwt }))
+            .then(data => dispatch(addJwt("Bearer " + data.jwt)))
 
         fetch(URI + "api/users/details", {
             method: "POST",
@@ -68,6 +65,7 @@ const Login = (props) => {
                 <br />
                 <input className='btn btn-light' type='submit' value='Submit' />
             </form>
+            <p>{token}</p>
         </div>
     );
 };

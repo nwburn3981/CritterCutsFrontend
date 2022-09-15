@@ -1,41 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+
+    const { token } = useSelector((store) => store.jwt)
+
+    const menuDisplay = () => {
+        if (!token) {
+            return (
+                <span>
+                    <Link className='btn btn-light loginLink' to='/login'>Login</Link>
+                    <Link className='btn btn-light loginLink' to='/register'>Register</Link>
+                </span>
+            )
+        }
+        else {
+            return (
+                <span>
+                    <Link className='btn btn-light loginLink' to='/appointments'>Appointments</Link>
+                    <Link className='btn btn-light loginLink' to='/pets'>Pets</Link>
+                </span>
+            )
+        }
+    }
+
     return (
-        <div>
-            <h1 className="display-1">Home</h1>
-            <nav className="navbar navbar-expand-lg bg-light">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Home</Link>
-
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <Link className="nav-link" to="/appointments">
-                                Appointments
-                            </Link>
-                            <Link className="nav-link" to="/pets">
-                                Pets
-                            </Link>
-                            <Link className="nav-link" to="/">
-                                Logout
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <div className='header-container'>
+            <h1 className='display-1 header-title'>Critter Cuts <i class="fa-solid fa-paw"></i></h1>
+            {menuDisplay()}
         </div>
     );
 };
