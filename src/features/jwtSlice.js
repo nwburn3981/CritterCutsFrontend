@@ -15,10 +15,10 @@ const jwtSlice = createSlice({
         removeJwt: (state) => {
             state.jwt = '';
         },
-        notAuthenticated: (state, action) => {
+        notAuthenticated: (state) => {
             state.isAuthenticated = false;
         },
-        Authenticated: (state, action) => {
+        Authenticated: (state) => {
             state.isAuthenticated = true;
         }
     }

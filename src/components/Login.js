@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addJwt } from '../features/jwtSlice';
 import { store } from '../store';
 
 
-const Login = () => {
+const Login = (props) => {
     const dispatch = useDispatch();
     const URI = 'http://localhost:8080/'
 
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
-    const [jwt1, setJwt] = useState('');
+    const [jwt, setJwt] = useState('');
 
-    const { jwt } = useSelector((store) => store.jwt);
+
+    // const { jwt, isAuthenticated } = useSelector((store) => store.jwt);
 
     const credentials = {
         "username": user,
@@ -30,8 +32,17 @@ const Login = () => {
         })
             .then((response) => response.json())
             .then(data => setJwt("Bearer " + data.jwt));
+        // .then(data => dispatch({ type: 'addJwt', payload: "Bearer " + data.jwt }))
 
-        fetch(URL + "user/")
+        fetch(URI + "api/users/details", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(credentials)
+        })
+            .then((response) => response.json())
+            .then(data => console.log(data))
     }
 
     return (
