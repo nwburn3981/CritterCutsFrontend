@@ -1,9 +1,9 @@
 const URI = 'http://localhost:8080/';
 
-const AppointmentApi = {
-    getAppointments: (setResult, role, id) => {
+const PetApi = {
+    getPets: (setResult, role, id) => {
         if (role === 'ADMIN') {
-            fetch(URI + `api/appointments`)
+            fetch(URI + `api/petInfo`)
                 .then(response => response.json())
                 .then(data => {
                     setResult(data)
@@ -22,4 +22,4 @@ const AppointmentApi = {
     }
 }
 
-export default AppointmentApi;
+export default PetApi;

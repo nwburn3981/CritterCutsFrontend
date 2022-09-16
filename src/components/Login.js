@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addJwt } from '../features/jwtSlice';
 import { setID, setRole } from '../features/userSlice'
 
-const URI = 'http://3.218.164.16:8080/'
+const URI = 'http://localhost:8080/'
 
 const Login = () => {
 
@@ -26,7 +26,6 @@ const Login = () => {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                "Access_Control-Allow-Origin": "*"
             },
             body: JSON.stringify(credentials)
         })
@@ -38,7 +37,6 @@ const Login = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": token,
-                "Access_Control-Allow-Origin": "*"
             },
             body: JSON.stringify(credentials)
         })
