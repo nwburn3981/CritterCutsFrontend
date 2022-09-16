@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addJwt } from '../features/jwtSlice';
-import { store } from '../store';
+import { setID, setRole } from '../features/userSlice'
 
-const URI = 'http://localhost:8080/'
+const URI = 'http://3.218.164.16:8080/'
 
-const Login = (props) => {
+const Login = () => {
 
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
     const dispatch = useDispatch();
-    const { token, isAuthenticated } = useSelector((store) => store.jwt);
+    const { token } = useSelector((store) => store.jwt);
+    const { userID, userRole } = useSelector((store) => store.userArr);
 
     const credentials = {
         "username": user,
@@ -25,6 +26,7 @@ const Login = (props) => {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
+                "Access_Control-Allow-Origin": "*"
             },
             body: JSON.stringify(credentials)
         })
@@ -34,13 +36,29 @@ const Login = (props) => {
         fetch(URI + "api/users/details", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": token,
+                "Access_Control-Allow-Origin": "*"
             },
             body: JSON.stringify(credentials)
         })
             .then((response) => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+
+                let id = data.customer_id === null ? data.employee_id : data.customer_id;
+                let role = data.role;
+                console.log(data);
+                console.log("ID is: " + id);
+                console.log("Role is: " + role);
+
+                dispatch(setID(id));
+                dispatch(setRole(role.substr(5)));
+            });
     }
+
+    useState(() => {
+
+    }, [token])
 
     return (
         <div className='mb-3 form'>
@@ -65,7 +83,6 @@ const Login = (props) => {
                 <br />
                 <input className='btn btn-light' type='submit' value='Submit' />
             </form>
-            <p>{token}</p>
         </div>
     );
 };

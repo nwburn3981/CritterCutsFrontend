@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const LoginHome = () => {
+
     return (
-        <div>
+        < div >
             <div className='landing-page-container'>
+                <p></p>
                 <div>
                     <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
@@ -29,7 +32,7 @@ const LoginHome = () => {
                 </div>
 
             </div >
-        </div>
+        </div >
     );
 };
 

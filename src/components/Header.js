@@ -27,7 +27,8 @@ const Header = () => {
 
     return (
         <div className='header-container'>
-            <h1 className='display-1 header-title'>Critter Cuts <i class="fa-solid fa-paw"></i></h1>
+            <h1 className='display-1 header-title'>Critter Cuts <i className="fa-solid fa-paw"></i></h1>
+
             {menuDisplay()}
         </div>
     );

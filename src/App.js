@@ -8,7 +8,6 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Appointments from './components/Appointments'
 import Pets from './components/Pets'
-import LoginHome from './home-page/LoginHome';
 
 function App() {
 
@@ -37,7 +36,6 @@ function App() {
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/pets" element={<Pets />} />
         </Routes>
-        <LoginHome />
       </div>
     )
   }

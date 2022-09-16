@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -8,24 +9,26 @@ body {
 }
 
 .header-container {
-  background-color: rgb(243, 243, 243);
   height: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .header-container .header-title {
   color: rgb(34, 115, 121);
   font-family: "Gloria Hallelujah", cursive;
   font-size: 80px;
   margin-left: 20px;
 }
+
 .header-container span {
   display: block;
   margin-right: 20px;
   position: relative;
   top: 15px;
 }
+
 .header-container span .loginLink {
   margin-right: 10px;
   background-color: rgb(113, 42, 226);
@@ -37,17 +40,20 @@ body {
     font-size: 60px;
   }
 }
+
 .blurb {
   position: absolute;
   width: 250px;
   right: 20px;
   top: 150px;
 }
+
 .blurb .arrow {
   position: absolute;
   width: 200px;
   transform: rotate(220deg) translate(60px, -25px);
 }
+
 .blurb h2 {
   font-size: 40px;
   margin-top: 100px;
@@ -62,4 +68,6 @@ body {
 
 .landing-page-container {
   margin-top: 80px;
-}/*# sourceMappingURL=App.css.map */
+}
+
+/*# sourceMappingURL=App.css.map */
